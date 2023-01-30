@@ -5,7 +5,7 @@ from aiogram import Dispatcher, types
 
 from app.utils.keyboards import get_welcome_keyboard
 from app.utils.functions import get_welcome_text
-from app.shared.constants import GROUP_ID, DELETE_AFTER, ADMIN_ID
+from app.shared.constants import GROUP_ID, DELETE_AFTER, ADMIN_USERNAME
 from app.shared.variables import is_enabled
 
 
@@ -44,13 +44,16 @@ async def welcome_group(message: types.Message):
         types.ChatPermissions(can_send_messages=False)
     )
     await asyncio.sleep(DELETE_AFTER)
-    await ans.delete()
+    try:
+        await ans.delete()
+    except:
+        pass
 
 
 def register_common_handlers(dp: Dispatcher):
     dp.register_message_handler(
         switch_state,
-        lambda message: message.from_user.id == ADMIN_ID,
+        lambda message: message.from_user.username == ADMIN_USERNAME,
         commands=['switch_state']
     )
     dp.register_message_handler(

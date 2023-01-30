@@ -21,6 +21,7 @@ async def call_check_subscription(call: types.CallbackQuery):
         f'new user {call.from_user.id} successfully restricted self'
     )
     await call.answer('Ура! Теперь Вы можете писать сообщения!')
+    await call.message.delete()
     await call.bot.restrict_chat_member(
         GROUP_ID,
         call.from_user.id,
