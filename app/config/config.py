@@ -10,17 +10,8 @@ class TgBot:
 
 
 @dataclass
-class Db:
-    user: str
-    password: str
-    addr: str
-    name: str
-
-
-@dataclass
 class Config:
     tg_bot: TgBot
-    db: Db
 
 
 def load_config():
@@ -29,11 +20,5 @@ def load_config():
     return Config(
         tg_bot=TgBot(
             token=os.getenv('BOT_TOKEN')
-        ),
-        db=Db(
-            user=os.getenv('DB_USER'),
-            password=os.getenv('DB_PASS'),
-            addr=os.getenv('DB_ADDR'),
-            name=os.getenv('DB_NAME')
         )
     )

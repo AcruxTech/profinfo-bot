@@ -1,5 +1,4 @@
 from aiogram import Dispatcher, types
-from aiogram.dispatcher.filters import Text
 
 from app.shared.constants import CHANNEL_USERNAME, GROUP_ID
 
