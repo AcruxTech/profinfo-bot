@@ -37,7 +37,7 @@ async def main():
     register_callback_handlers(dp)  
 
     # Запуск поллинга                    
-    await dp.start_polling(allowed_updates=['chat_member', 'message', 'callback_query'])                    
+    await dp.start_polling(allowed_updates=['message', 'callback_query'])                    
 
 
 if __name__ == "__main__":
